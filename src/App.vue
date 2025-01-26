@@ -6,7 +6,7 @@ useAuthUserStore()
 </script>
 
 <template>
-  <div class="flex h-screen overflow-auto">
+  <div class="flex min-h-screen overflow-auto">
     <RouterView />
   </div>
 </template>
