@@ -14,7 +14,6 @@ services:
     working_dir: /var/www/html
     volumes:
       - ./:/var/www/html
-      - ./storage/logs/laravel:/var/log/laravel
     depends_on:
       - db
     networks:
