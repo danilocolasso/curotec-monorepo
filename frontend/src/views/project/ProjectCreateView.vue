@@ -6,7 +6,6 @@ import { Textarea } from '@/components/ui/textarea'
 import { useProjectCreateStore } from '@/stores/project/project-create.ts'
 import { Button } from '@/components/ui/button'
 import { TagsInput, TagsInputInput } from '@/components/ui/tags-input'
-import { ref } from 'vue'
 
 const store = useProjectCreateStore()
 const [title, titleProps] = store.defineField('title')
@@ -20,7 +19,13 @@ const [tags, tagsProps] = store.defineField('tags')
     <div class="flex flex-col h-full justify-between">
       <form id="project-create-form" class="flex flex-col gap-4" @submit="store.onSubmit">
         <FormField id="title" label="Title" :error="store.errors.title">
-          <Input id="title" placeholder="Title" v-model="title" v-bind="titleProps" class="bg-white" />
+          <Input
+            id="title"
+            placeholder="Title"
+            v-model="title"
+            v-bind="titleProps"
+            class="bg-white"
+          />
         </FormField>
         <FormField id="description" label="Description" :error="store.errors.description">
           <Textarea
@@ -39,7 +44,7 @@ const [tags, tagsProps] = store.defineField('tags')
                 {{ item }}
               </TagsInputItemText>
             </TagsInputItem>
-            <TagsInputInput placeholder="Tags" v-bind="tagsProps"/>
+            <TagsInputInput placeholder="Tags" v-bind="tagsProps" />
           </TagsInput>
         </FormField>
       </form>
