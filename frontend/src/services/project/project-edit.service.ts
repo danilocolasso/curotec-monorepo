@@ -10,6 +10,6 @@ export type ProjectEditResponse = Project
 export const projectEditService = async (
   payload: ProjectEditPayload,
 ): Promise<ProjectEditResponse> => {
-  const response = await api.put(`/projects/${payload.id}`, payload)
+  const response = await api.get(`/projects/${payload.id}`, payload)
   return response.data
 }

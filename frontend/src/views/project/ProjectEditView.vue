@@ -3,17 +3,17 @@ import { Title } from '@/components/ui/title'
 import { FormField } from '@/components/ui/form-field'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { useProjectCreateStore } from '@/stores/project/project-create.ts'
 import { Button } from '@/components/ui/button'
 import {
   TagsInput,
   TagsInputInput,
   TagsInputItem,
   TagsInputItemDelete,
-  TagsInputItemText
+  TagsInputItemText,
 } from '@/components/ui/tags-input'
+import { useProjectEditStore } from '@/stores/project/project-edit.ts'
 
-const store = useProjectCreateStore()
+const store = useProjectEditStore()
 const [title, titleProps] = store.defineField('title')
 const [description, descriptionProps] = store.defineField('description')
 const [tags, tagsProps] = store.defineField('tags')
@@ -21,9 +21,9 @@ const [tags, tagsProps] = store.defineField('tags')
 
 <template>
   <div class="flex flex-col w-full gap-8">
-    <Title title="Project" subtitle="Create new project" />
+    <Title title="Project" subtitle="Edit project" />
     <div class="flex flex-col h-full justify-between">
-      <form id="project-create-form" class="flex flex-col gap-4" @submit="store.onSubmit">
+      <form id="project-edit-form" class="flex flex-col gap-4" @submit="store.onSubmit">
         <FormField id="title" label="Title" :error="store.errors.title">
           <Input
             id="title"
@@ -45,7 +45,7 @@ const [tags, tagsProps] = store.defineField('tags')
         </FormField>
         <FormField id="tags" label="Tags" :error="store.errors.tags">
           <TagsInput v-model="tags as string[]">
-            <TagsInputItem v-for="item in tags" :key="item" :value="item!">
+            <TagsInputItem v-for="item in tags" :key="item" :value="item">
               <TagsInputItemText>
                 {{ item }}
               </TagsInputItemText>
@@ -59,9 +59,9 @@ const [tags, tagsProps] = store.defineField('tags')
         <router-link :to="{ name: 'projects' }">
           <Button>Cancel</Button>
         </router-link>
-        <Button form="project-create-form" type="submit" :disabled="store.loading">
-          <span v-if="store.loading">Creating...</span>
-          <span v-else>Create</span>
+        <Button form="project-edit-form" type="submit" :disabled="store.loading">
+          <span v-if="store.loading">Saving...</span>
+          <span v-else>Save</span>
         </Button>
       </div>
     </div>

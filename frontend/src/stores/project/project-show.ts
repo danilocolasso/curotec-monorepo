@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import type { Project } from '@/types/project.ts'
 import { useRoute } from 'vue-router'
 import {
@@ -23,7 +23,9 @@ export const useProjectShowStore = defineStore('useProjectShowStore', () => {
     }
   }
 
-  fetchProject()
+  onMounted(async () => {
+    await fetchProject()
+  })
 
   return {
     project,

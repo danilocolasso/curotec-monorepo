@@ -20,5 +20,10 @@ export const privateRoutes: RouteRecordRaw[] = [
     path: 'projects/:id',
     name: 'projects.show',
     component: () => import('@/views/project/ProjectShowView.vue'),
+  },
+  {
+    path: 'projects/:id/edit',
+    name: 'projects.edit',
+    component: () => import('@/views/project/ProjectEditView.vue'),
   }
 ]

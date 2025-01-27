@@ -2,7 +2,7 @@ import * as yup from 'yup'
 
 export const projectUpdateSchema = yup.object({
   id: yup.number().required(),
-  name: yup.string().required(),
+  title: yup.string().required(),
   description: yup.string().optional(),
   tags: yup.array(yup.string()).optional(),
 })
