@@ -2,6 +2,7 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { handleApiError } from '@/utils/handleApiError.ts'
 import { authUserProfileService } from '@/services/auth/auth-user-profile.service.ts'
+import type { User } from '@/types/user.ts'
 
 export const useAuthUserStore = defineStore('useAuthUserStore', () => {
   const user = ref<User | null>(null)
@@ -18,10 +19,9 @@ export const useAuthUserStore = defineStore('useAuthUserStore', () => {
     }
   }
 
-  fetchUser()
-
   return {
     user,
+    fetchUser,
     loading,
   }
 })

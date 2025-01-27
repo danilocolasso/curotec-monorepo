@@ -2,7 +2,7 @@
   <div class="flex w-full items-center justify-center bg-slate-100">
     <Card class="flex flex-col gap-4 p-8 w-96">
       <CardHeader class="p-2 text-center font-bold">Login</CardHeader>
-      <form id="login-form" class="flex flex-col gap-4" @submit="store.onSubmit">
+      <form id="login-form" class="flex flex-col gap-4" @submit="store.login">
         <FormField id="username" label="Username" :error="store.errors.username">
           <Input
             id="username"

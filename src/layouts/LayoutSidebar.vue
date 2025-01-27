@@ -2,7 +2,7 @@
 import { type FunctionalComponent } from 'vue'
 import { useSidebar } from '@/composables/useSidebar.ts'
 import { Button } from '@/components/ui/button'
-import { CodeBracketIcon, Cog6ToothIcon, HomeIcon, XMarkIcon } from '@heroicons/vue/16/solid'
+import { CodeBracketIcon, UsersIcon, HomeIcon, XMarkIcon } from '@heroicons/vue/16/solid'
 
 const { isCollapsed, closeSidebar } = useSidebar()
 
@@ -14,19 +14,14 @@ interface Item {
 
 const items: Item[] = [
   {
-    title: 'Dashboard',
+    title: 'Projects',
     icon: HomeIcon,
     link: 'home',
   },
-  // {
-  //   title: 'Users',
-  //   icon: UsersIcon,
-  //   link: '/users',
-  // },
   {
-    title: 'Settings',
-    icon: Cog6ToothIcon,
-    link: 'login',
+    title: 'Users',
+    icon: UsersIcon,
+    link: 'home',
   },
 ]
 </script>
@@ -42,7 +37,7 @@ const items: Item[] = [
     <div class="flex justify-between p-4">
       <router-link :to="{ name: 'home' }" class="flex gap-2 items-center font-bold">
         <CodeBracketIcon class="w-5" />
-        <span v-if="!isCollapsed">Projects</span>
+        <span v-if="!isCollapsed">Curotec</span>
       </router-link>
       <Button class="md:hidden self-end" @click="closeSidebar">
         <XMarkIcon />

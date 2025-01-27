@@ -9,8 +9,10 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { useSidebar } from '@/composables/useSidebar.ts'
+import { useAuthLoginStore } from '@/stores/auth/auth-login.ts'
 
 const { toggleSidebar } = useSidebar()
+const { logout } = useAuthLoginStore()
 </script>
 
 <template>
@@ -25,12 +27,11 @@ const { toggleSidebar } = useSidebar()
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem>
-          <!-- TO DO: Logout-->
-          <router-link :to="{ name: 'login' }" class="flex gap-2 items-center">
+        <DropdownMenuItem @click="logout">
+          <div class="flex gap-2 items-center">
             <ArrowRightStartOnRectangleIcon class="w-5" />
             <span>Logout</span>
-          </router-link>
+          </div>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

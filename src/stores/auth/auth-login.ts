@@ -6,6 +6,7 @@ import { useForm } from 'vee-validate'
 import { type LoginPayload, loginSchema } from '@/schemas/auth/loginSchema.ts'
 import { handleApiError } from '@/utils/handleApiError.ts'
 import { useRouter } from 'vue-router'
+import { authLogoutService } from '@/services/auth/auth-logout.service.ts'
 
 export const useAuthLoginStore = defineStore('useAuthLoginStore', () => {
   const user = ref<User | null>(null)
@@ -16,7 +17,7 @@ export const useAuthLoginStore = defineStore('useAuthLoginStore', () => {
     validationSchema: loginSchema,
   })
 
-  const onSubmit = handleSubmit(async (data) => {
+  const login = handleSubmit(async (data) => {
     try {
       loading.value = true
       user.value = await authLoginService(data)
@@ -28,10 +29,24 @@ export const useAuthLoginStore = defineStore('useAuthLoginStore', () => {
     }
   })
 
+  const logout = async () => {
+    try {
+      loading.value = true
+      await authLogoutService()
+      user.value = null
+      await router.push({ name: 'login' })
+    } catch (error) {
+      handleApiError(error)
+    } finally {
+      loading.value = false
+    }
+  }
+
   return {
     user,
     loading,
-    onSubmit,
+    login,
+    logout,
     defineField,
     errors,
   }
