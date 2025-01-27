@@ -14,7 +14,7 @@ class ProjectSeeder extends Seeder
      */
     public function run(): void
     {
-        $projects = Project::factory(10)->create();
+        $projects = Project::factory(100)->create();
         $tags = Tag::inRandomOrder()->limit(10)->get();
 
         $projects->each(function ($project) use ($tags) {

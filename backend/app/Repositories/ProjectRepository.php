@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Project;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -20,6 +21,7 @@ class ProjectRepository
         $perPage = $parameters['per_page'] ?? 10;
 
         $query = Project::query();
+        $query->where('user_id', auth()->id());
 
         if ($filters['query']) {
             $query->where(function ($query) use ($filters) {
@@ -39,7 +41,12 @@ class ProjectRepository
     {
         $data['user_id'] = auth()->id();
 
-        return Project::create($data);
+        $project = Project::create($data);
+        $tags = collect($data['tags'])->map(fn($tag) => Tag::firstOrCreate(['name' => $tag]));
+
+        $project->tags()->attach($tags);
+
+        return $project;
     }
 
     public function update(Project $project, array $data): Project

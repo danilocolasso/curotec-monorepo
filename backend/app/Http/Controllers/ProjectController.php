@@ -31,8 +31,6 @@ class ProjectController extends Controller
         $data = request()->all();
         $projects = $this->projectRepository->paginate($data);
 
-        return $projects;
-
         return ProjectListResource::collection($projects);
     }
 
