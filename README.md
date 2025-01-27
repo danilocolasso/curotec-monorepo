@@ -11,6 +11,8 @@
 ### Before install
 Make sure you have installed Docker Desktop. If you don't, follow the <a href="https://www.docker.com/get-started" target="_blank">Get Started with Docker</a>.
 
+To provide a comprehensive solution for the assignment, I have divided the project into two separate repositories: one for the backend and another for the frontend. \
+You can find the frontend project [here](https://github.com/danilocolasso/curotec-assignment-front).
 
 ### Installation guide
 
@@ -58,10 +60,38 @@ http://localhost:8000/
 
 For command details, refer to the `Makefile` in the application root.
 
+### Availabe endpoints
+- **GET** `/user` - User profile
+- **POST** `/login` - Login
+- **POST** `/register` - Register
+- **POST** `/logout` - Logout
+- **GET** `/projects` - List all projects, paginated, with optional search by title, tags or status
+- **POST** `/projects` - Create a new project
+- **GET** `/projects/{id}` - Show a project
+- **PUT** `/projects/{id}` - Update a project
+- **DELETE** `/projects/{id}` - Delete a project
+- **POST** `/projects/{id}/contributors` - Add a contributor to a project
+- **DELETE** `/projects/{id}/contributors/{user_id}` - Remove a contributor from a project
+
+### Technologies used
+- [Docker](https://www.docker.com/) - For containerization
+- [PHP 8.3](https://www.php.net/releases/8.3/en.php) - Main language
+- [Laravel 11](https://laravel.com/docs/11.x) - PHP Framework
+- [Laravel Sanctum](https://laravel.com/docs/11.x/sanctum) - API authentication
+- [Nginx](https://www.nginx.com/) - Web server
+- [PostgreSQL](https://www.postgresql.org/) - Database
+- [Pest](https://pestphp.com/) - Testing Framework
+- [ide-helper](https://github.com/barryvdh/laravel-ide-helper) - For IDE autocomplete
+- [spatie/laravel-permission](https://github.com/spatie/laravel-permission) - For roles and permissions management
+
+### To do
+- [ ] To properly use the `spatie/laravel-permission` package
+  - <small>Developed it with policies and relationships</small> 
+- [ ] STORY-002
+- [ ] STORY-003
+
 ### Logs
 - All application logs, including **Laravel** and **Nginx** are located in `storage/logs` directory.
 
-<br />
-<h4 align="center">
-    Made with ♡ by <a href="https://www.linkedin.com/in/danilocolasso/" target="_blank">Danilo Colasso</a>
-</h4>
+## Additional Project for Enhanced Reference
+To provide a better reference of my work, I am temporarily making publicly available a system I am currently modernizing for a client company, made in Laravel. This project will be accessible on this [GitHub Repository](https://github.com/danilocolasso/e60-backend) for the next few days. Feel free to explore and provide feedback!
