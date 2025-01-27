@@ -44,8 +44,7 @@ class ProjectRepository
         $project = Project::create($data);
 
         if (array_key_exists('tags', $data)) {
-            $tags = collect($data['tags'])->map(fn($tag) => Tag::firstOrCreate(['name' => $tag]));
-            $project->tags()->attach($tags);
+            $this->attachTags($project, $data['tags']);
         }
 
         return $project;
@@ -71,5 +70,14 @@ class ProjectRepository
     public function removeContributor(Project $project, User $contributor): void
     {
         $project->contributors()->detach($contributor);
+    }
+
+    private function attachTags(Project $project, array $tags): void
+    {
+        $existingTags = Tag::whereIn('name', $tags)->get();
+        $newTags = collect($tags)->diff($existingTags->pluck('name'));
+        $tags = $existingTags->merge($newTags->map(fn($tag) => Tag::create(['name' => $tag])));
+
+        $project->tags()->attach($tags);
     }
 }
