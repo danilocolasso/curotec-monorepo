@@ -42,9 +42,11 @@ class ProjectRepository
         $data['user_id'] = auth()->id();
 
         $project = Project::create($data);
-        $tags = collect($data['tags'])->map(fn($tag) => Tag::firstOrCreate(['name' => $tag]));
 
-        $project->tags()->attach($tags);
+        if (array_key_exists('tags', $data)) {
+            $tags = collect($data['tags'])->map(fn($tag) => Tag::firstOrCreate(['name' => $tag]));
+            $project->tags()->attach($tags);
+        }
 
         return $project;
     }
