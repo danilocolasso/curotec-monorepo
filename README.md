@@ -13,9 +13,6 @@
 ### Before install
 Make sure you have installed Docker Desktop. If you don't, follow the <a href="https://www.docker.com/get-started" target="_blank">Get Started with Docker</a>.
 
-To provide a comprehensive solution for the assignment, I have divided the project into two separate repositories: one for the backend and another for the frontend. \
-You can find the frontend project [here](https://github.com/danilocolasso/curotec-assignment-front).
-
 ### Installation guide
 
 #### Clone the project
