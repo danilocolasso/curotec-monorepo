@@ -7,6 +7,8 @@ install build:
 	@echo "$(YELLOW)Creating container network...$(RESET)"
 	@docker network create --driver bridge app-network || true
 	@echo "$(YELLOW)Building containers...$(RESET)"
+	@echo "$(YELLOW)Copying env files...$(RESET)"
+	@docker compose exec app cp .env.sample .env
 	@docker compose up -d --build
 
 up start:
