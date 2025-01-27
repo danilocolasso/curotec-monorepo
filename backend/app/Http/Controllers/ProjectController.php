@@ -6,9 +6,12 @@ use App\Http\Requests\AddContributorRequest;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Resources\ProjectListResource;
+use App\Http\Resources\ProjectShowResource;
 use App\Models\Project;
 use App\Models\User;
 use App\Repositories\ProjectRepository;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response as ResponseStatus;
@@ -24,7 +27,7 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): ResourceCollection
     {
         Gate::authorize('viewAny', Project::class);
 
@@ -37,7 +40,7 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProjectRequest $request)
+    public function store(StoreProjectRequest $request): JsonResponse
     {
         $data = $request->validated();
         $project = $this->projectRepository->create($data);
@@ -48,17 +51,17 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Project $project)
+    public function show(Project $project): JsonResponse
     {
         Gate::authorize('view', $project);
 
-        return response()->json($project);
+        return response()->json(new ProjectShowResource($project));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project $project)
+    public function edit(Project $project): JsonResponse
     {
         Gate::authorize('update', $project);
 
@@ -68,7 +71,7 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProjectRequest $request, Project $project)
+    public function update(UpdateProjectRequest $request, Project $project): JsonResponse
     {
         $data = $request->validated();
         $project = $this->projectRepository->update($project, $data);
