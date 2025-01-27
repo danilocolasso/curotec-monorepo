@@ -111,12 +111,14 @@ Frontend:
 Backend:
 - [ ] To properly use the `spatie/laravel-permission` package
     - <small>Developed it with policies and relationships</small>
+- [ ] Add more tests
 - [ ] STORY-002
 - [ ] STORY-003
 
 Frontend:
 - [ ] Add tests
-- [ ] Add Project pages
+- [ ] Fix bug in project creation
+- [ ] Add contributors fields to form (backend is ready to use)
 - [ ] Add Users page
 - [ ] Add User profile page
 - [ ] STORY-002
