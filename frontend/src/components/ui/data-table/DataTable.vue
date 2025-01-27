@@ -12,7 +12,7 @@
       <DataTableLoading v-if="loading" />
     </Table>
     <DataTablePagination
-      v-if="pagination"
+      v-if="pagination && lastPage > 1"
       :currentPage="currentPage"
       :lastPage="lastPage"
       @pageChange="handlePageChange"
@@ -34,7 +34,6 @@ interface PaginatedPayload<T> {
   per_page: number
   sort?: string
   order?: 'asc' | 'desc'
-
   [key: string]: any
 }
 
@@ -51,7 +50,8 @@ export interface DataTableColumn<T> {
   key: keyof T
   label: string
   sortable?: boolean
-  value?: (row: T) => string | any
+  value?: (row: T) => string | string[] | any // TODO handle all possible types
+  type?: 'string' | 'number' | 'date' | 'array'
 }
 
 export interface DataTableAction<T> {

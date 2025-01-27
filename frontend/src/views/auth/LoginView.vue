@@ -6,7 +6,6 @@
         <FormField id="username" label="Username" :error="store.errors.username">
           <Input
             id="username"
-            type="text"
             placeholder="Username"
             v-model="username"
             v-bind="usernameProps"

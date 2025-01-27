@@ -1,5 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <main>It works</main>
+  <main class="flex items-center justify-center w-full">
+      Welcome
+  </main>
 </template>

@@ -18,7 +18,7 @@ export const useProjectListStore = defineStore('useProjectListStore', () => {
     {
       key: 'tags',
       label: 'tags',
-      value: (row: Project) => row.tags?.map((tag) => tag.name).join(', '),
+      value: (row: Project) => row.tags?.map((tag) => tag.name),
     },
   ]
 
