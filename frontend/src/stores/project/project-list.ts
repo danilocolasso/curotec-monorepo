@@ -27,7 +27,7 @@ export const useProjectListStore = defineStore('useProjectListStore', () => {
       label: 'Show',
       icon: MagnifyingGlassIcon,
       onClick: async (item: Project) => {
-        await router.push(`/projects/show/${item.id}`)
+        await router.push(`/projects/${item.id}`)
       },
     },
     {
