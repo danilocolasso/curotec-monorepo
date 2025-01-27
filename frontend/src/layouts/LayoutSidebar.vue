@@ -16,7 +16,7 @@ const items: Item[] = [
   {
     title: 'Projects',
     icon: HomeIcon,
-    link: 'home',
+    link: 'projects',
   },
   {
     title: 'Users',
@@ -32,7 +32,7 @@ const items: Item[] = [
       'bg-gray-800 text-white',
       isCollapsed ? '-translate-x-full md:-translate-x-0 w-16' : '-translate-x-0 w-64',
     ]"
-    class="fixed md:static min-h-svh transition-all duration-300 overflow-hidden"
+    class="fixed md:static min-h-svh transition-all duration-300 overflow-hidden z-99"
   >
     <div class="flex justify-between p-4">
       <router-link :to="{ name: 'home' }" class="flex gap-2 items-center font-bold">

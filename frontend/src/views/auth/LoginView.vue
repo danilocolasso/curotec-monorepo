@@ -35,7 +35,7 @@
 import { Card, CardHeader } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { useAuthLoginStore } from '@/stores/auth/auth-login'
+import { useAuthLoginStore } from '@/stores/auth/auth-login.ts'
 import { FormField } from '@/components/ui/form-field'
 
 const store = useAuthLoginStore()

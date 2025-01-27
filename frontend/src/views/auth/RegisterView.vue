@@ -54,7 +54,7 @@
 import { Card, CardHeader } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { useAuthRegisterStore } from '@/stores/auth/auth-register'
+import { useAuthRegisterStore } from '@/stores/auth/auth-register.ts'
 import { FormField } from '@/components/ui/form-field'
 
 const store = useAuthRegisterStore()
